@@ -6,7 +6,12 @@ public class Main {
     private static Manager modManager;
 
     public static void showMainWin(){
+        MainWindow mainWin = new MainWindow(modManager);
+        mainWin.setVisible(true);
+    }
 
+    public static void setModManager(Manager mngr){
+        modManager = mngr;
     }
 
     public static void main(String[] args) {
@@ -16,7 +21,7 @@ public class Main {
             System.out.println("Non-critical error - Couldn't set the Nimbus LaF.");
         }
         try {
-            modManager = ManagerIO.getSavedManager();
+            setModManager(ManagerIO.getSavedManager());
             System.out.println("TF2 custom folder: " + modManager.getCustomDir());
             showMainWin();
         } catch (IOException e) {

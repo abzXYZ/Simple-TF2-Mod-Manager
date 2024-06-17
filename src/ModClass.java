@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 
 public abstract class ModClass extends Mod{
@@ -8,7 +9,7 @@ public abstract class ModClass extends Mod{
 
 
 
-    public String getModIcon(){
-        return "Xd";
+    public ImageIcon getModIcon(){
+        return new ImageIcon();
     }
 }

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.util.List;
 
@@ -8,8 +9,8 @@ public class VPKmod extends Mod {
     }
 
     @Override
-    public String getModIcon(){
-        return "Xd";
+    public ImageIcon getModIcon(){
+        return new ImageIcon();
     }
 
     @Override

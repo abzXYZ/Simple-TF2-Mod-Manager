@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.nio.file.Path;
 import java.io.File;
 import java.util.List;
@@ -31,7 +32,7 @@ public abstract class Mod {
         this.enabled = enabled;
     }
 
-    public abstract String getModIcon();
+    public abstract ImageIcon getModIcon();
 
     public abstract List<String> getTags();
 }

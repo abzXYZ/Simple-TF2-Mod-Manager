@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameDirSelector extends JFrame {
@@ -13,7 +14,6 @@ public class GameDirSelector extends JFrame {
         setupText = new JLabel("Please specify the TF2 game directory ([Your Steam directory]/steamapps/common/Team Fortress 2/tf)");
         dirPathBtn = new JButton("Browse");
 
-//        wybranie pliku i zapisanie go w selected file
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
@@ -34,10 +34,19 @@ public class GameDirSelector extends JFrame {
                     System.out.println("'/custom' found. Proceeding...");
                 }
                 ManagerIO.saveManager(new Manager(customDir, new ArrayList<>(),new ArrayList<>()));
-                //JOptionPane.showMessageDialog(null, "Game directory selected. Please start the app again.", "Restart porfavor", JOptionPane.INFORMATION_MESSAGE);
                 JOptionPane.showMessageDialog(null, "Game directory selected (Assuming you chose the right one).", "Setup done", JOptionPane.INFORMATION_MESSAGE);
-                Main.showMainWin(); //ciekawe czy wypada tak robić...
+                try {
+                    Main.setModManager(ManagerIO.getSavedManager());
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null, "Couldn't save newly created config\nExiting...", "Critical error!", JOptionPane.ERROR_MESSAGE);
+                    throw new RuntimeException(ex);
+                }
+                Main.showMainWin(); //ciekawe czy wypada tak robić... Jeżeli nie to wrócę do starej metody
+                this.setVisible(false);
+                /*
+                JOptionPane.showMessageDialog(null, "Game directory selected. Please start the app again.", "Restart porfavor", JOptionPane.INFORMATION_MESSAGE);
                 System.exit(0);
+                */
             }
         });
 

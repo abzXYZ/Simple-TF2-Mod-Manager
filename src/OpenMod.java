@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.io.File;
 import java.util.List;
 
@@ -7,8 +8,8 @@ public class OpenMod extends Mod{
     }
 
     @Override
-    public String getModIcon(){
-        return "xd";
+    public ImageIcon getModIcon(){
+        return new ImageIcon();
     }
 
     @Override
