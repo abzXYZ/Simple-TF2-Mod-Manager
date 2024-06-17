@@ -32,7 +32,7 @@ public class GameDirSelector extends JFrame {
                 } else {
                     System.out.println("'/custom' found. Proceeding...");
                 }
-                ManagerIO.saveManager(new Manager(customDir, new ArrayList<>(),new ArrayList<>()));
+                ManagerIO.saveManager(new Manager(customDir, new ArrayList<>()));
                 JOptionPane.showMessageDialog(null, "Game directory selected (Assuming you chose the right one).", "Setup done", JOptionPane.INFORMATION_MESSAGE);
                 try {
                     Main.setModManager(ManagerIO.getSavedManager());
@@ -40,7 +40,7 @@ public class GameDirSelector extends JFrame {
                     JOptionPane.showMessageDialog(null, "Couldn't save newly created config\nExiting...", "Critical error!", JOptionPane.ERROR_MESSAGE);
                     throw new RuntimeException(ex);
                 }
-                Main.showMainWin(); //ciekawe czy wypada tak robić... Jeżeli nie to wrócę do starej metody
+                Main.showMainWin(); //ciekawe czy wypada tak robić... Jeżeli nie to wrócę do starej NIEFAJNEJ metody
                 this.setVisible(false);
                 /*
                 JOptionPane.showMessageDialog(null, "Game directory selected. Please start the app again.", "Restart porfavor", JOptionPane.INFORMATION_MESSAGE);

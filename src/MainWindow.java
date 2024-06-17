@@ -7,13 +7,19 @@ public class MainWindow extends JFrame {
     public MainWindow(Manager mngr){
         this.manager = mngr;
         setTitle("Simple TF2 Mod Manager");
+        this.setIconImage(ImgLibrary.getImage("coffee"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         ModsGrid grid = new ModsGrid(mngr);
-        add(grid, BorderLayout.CENTER);
+        JScrollPane jscp = new JScrollPane(grid);
+        jscp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        jscp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        setSize(500,400);
+        add(jscp, BorderLayout.CENTER);
+
+        this.pack();
+        setSize(720,480);
         setLocationRelativeTo(null);
     }
 

@@ -1,10 +1,11 @@
 import javax.swing.*;
+import java.io.Serializable;
 import java.nio.file.Path;
 import java.io.File;
 import java.util.List;
 import java.util.HashMap;
 
-public abstract class Mod {
+public abstract class Mod implements Serializable {
     private String name;
     private File fileName;
     private Boolean enabled;
