@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,6 +11,7 @@ public class GameDirSelector extends JFrame {
     public GameDirSelector()  {
         setupText = new JLabel("Please specify the TF2 game directory ([Your Steam directory]/steamapps/common/Team Fortress 2/tf)");
         dirPathBtn = new JButton("Browse");
+        this.setIconImage(ImgLibrary.getImage("coffee"));
 
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);

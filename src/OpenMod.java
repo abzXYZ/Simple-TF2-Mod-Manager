@@ -9,7 +9,7 @@ public class OpenMod extends Mod{
 
     @Override
     public ImageIcon getModIcon(){
-        return new ImageIcon();
+        return new ImageIcon("");
     }
 
     @Override

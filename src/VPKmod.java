@@ -10,7 +10,7 @@ public class VPKmod extends Mod {
 
     @Override
     public ImageIcon getModIcon(){
-        return new ImageIcon();
+        return new ImageIcon(ImgLibrary.getImage("metal"));
     }
 
     @Override
