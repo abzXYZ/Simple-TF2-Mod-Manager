@@ -16,7 +16,9 @@ public final class ImgLibrary {
             entry("unknown","res/Unknown.png"),
             entry("camera","res/Camera.png"),
             entry("enabled","res/P_Have.png"),
-            entry("disabled","res/P_Do_not_have.png")
+            entry("disabled","res/P_Do_not_have.png"),
+            entry("plus","res/P_Want.png"),
+            entry("minus","res/P_Dash.png")
     );
     public static Image getImage(String key){
         if(icons.containsKey(key)){
