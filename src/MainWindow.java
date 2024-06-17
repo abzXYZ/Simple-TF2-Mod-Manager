@@ -16,10 +16,13 @@ public class MainWindow extends JFrame {
         jscp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         jscp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
+        TagsPanel tags = new TagsPanel(mngr);
+
         add(jscp, BorderLayout.CENTER);
+        add(tags, BorderLayout.WEST);
 
         this.pack();
-        setSize(720,480);
+        setSize(1200,700);
         setLocationRelativeTo(null);
     }
 

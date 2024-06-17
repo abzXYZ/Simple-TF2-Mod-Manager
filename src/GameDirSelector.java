@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class GameDirSelector extends JFrame {
     private JLabel setupText;
@@ -32,7 +31,7 @@ public class GameDirSelector extends JFrame {
                 } else {
                     System.out.println("'/custom' found. Proceeding...");
                 }
-                ManagerIO.saveManager(new Manager(customDir, new ArrayList<>()));
+                ManagerIO.saveManager(new Manager(customDir));
                 JOptionPane.showMessageDialog(null, "Game directory selected (Assuming you chose the right one).", "Setup done", JOptionPane.INFORMATION_MESSAGE);
                 try {
                     Main.setModManager(ManagerIO.getSavedManager());

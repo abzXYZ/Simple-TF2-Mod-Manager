@@ -4,13 +4,12 @@ import java.util.List;
 
 public class VPKmod extends Mod {
 
-    public VPKmod(String name, File fileName, Boolean enabled) {
-        super(name, fileName, enabled);
+    public VPKmod(File file, List<String> tags, Boolean enabled) {
+        super(file, tags, enabled);
     }
 
-    @Override
-    public ImageIcon getModIcon(){
-        return new ImageIcon(ImgLibrary.getImage("crate",64,64));
+    public VPKmod(File file) {
+        super(file);
     }
 
     @Override

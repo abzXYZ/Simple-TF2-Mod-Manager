@@ -3,17 +3,24 @@ import java.io.File;
 import java.util.List;
 
 public class OpenMod extends Mod{
-    public OpenMod(String name, File fileName, Boolean enabled) {
-        super(name, fileName, enabled);
+
+    public OpenMod(File file, List<String> tags, Boolean enabled) {
+        super(file, tags, enabled);
+    }
+
+    public OpenMod(File file) {
+        super(file);
+        setEnabled(true);
+        setTags(List.of());
     }
 
     @Override
-    public ImageIcon getModIcon(){
-        return new ImageIcon(ImgLibrary.getImage("metal",64,64));
+    public List<String> getTags() {
+        return getTags();
     }
 
-    @Override
-    public List getTags(){
-        return List.of();
+    public void autoDetectTags(){
+
     }
+
 }

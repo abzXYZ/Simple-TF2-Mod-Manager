@@ -8,8 +8,15 @@ public final class ImgLibrary {
 
     private static Map<String, String> icons = Map.ofEntries(
             entry("coffee","res/Coffee_Icon.png"),
-            entry("metal","res/Ico_metal.png"),
-            entry("crate","res/Backpack_Unlocked_Cosmetic_Crate_Multi-Class.png")
+            entry("crate","res/Backpack_Unlocked_Cosmetic_Crate_Multi-Class.png"),
+            entry("hud","res/hud.png"),
+            entry("paint","res/Category_icon_Paintable_items.png"),
+            entry("scrap","res/scrap.png"),
+            entry("sound","res/Speaker_Icon.png"),
+            entry("unknown","res/Unknown.png"),
+            entry("camera","res/Camera.png"),
+            entry("enabled","res/P_Have.png"),
+            entry("disabled","res/P_Do_not_have.png")
     );
     public static Image getImage(String key){
         if(icons.containsKey(key)){
@@ -25,5 +32,13 @@ public final class ImgLibrary {
             return result.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
         }
         return null;
+    }
+
+    public static Image getImage(Boolean enabled, int width, int height){
+        Image result = getImage("disabled");
+        if(enabled){
+            result = getImage("enabled");
+        }
+        return result.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
     }
 }
