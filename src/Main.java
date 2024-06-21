@@ -14,6 +14,14 @@ public class Main {
         modManager = mngr;
     }
 
+    public static Manager getModManager() {
+        return modManager;
+    }
+
+    public static void showSelectionWin(Boolean select){
+        new GameDirSelector(select).setVisible(true);
+    }
+
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
@@ -26,7 +34,7 @@ public class Main {
             showMainWin();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Couldn't read saved config.\nCreating new...", "No configuration detected", JOptionPane.ERROR_MESSAGE);
-            new GameDirSelector().setVisible(true);
+            showSelectionWin(true);
         }
     }
 }

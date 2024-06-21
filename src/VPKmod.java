@@ -10,11 +10,13 @@ public class VPKmod extends Mod {
 
     public VPKmod(File file) {
         super(file);
+        this.addTag("vpk");
     }
 
     @Override
-    public List getTags(){
-        return List.of("vpk");
+    public ImageIcon getModIcon() {
+        return new ImageIcon(ImgLibrary.getImage("gcf",64,64));
     }
+
 
 }

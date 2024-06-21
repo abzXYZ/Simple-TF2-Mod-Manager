@@ -3,6 +3,7 @@ import java.awt.*;
 
 public class MainWindow extends JFrame {
     private Manager manager;
+    private SettingsWindow configWin;
 
     public MainWindow(Manager mngr){
         this.manager = mngr;
@@ -16,13 +17,12 @@ public class MainWindow extends JFrame {
         jscp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         jscp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
-        TagsPanel tags = new TagsPanel(mngr);
-
+        add(new Toolbar(), BorderLayout.NORTH);
         add(jscp, BorderLayout.CENTER);
-        add(tags, BorderLayout.WEST);
+        add(new TagsPanel(mngr,grid), BorderLayout.WEST);
 
         this.pack();
-        setSize(1200,700);
+        setSize(1200,732);
         setLocationRelativeTo(null);
     }
 

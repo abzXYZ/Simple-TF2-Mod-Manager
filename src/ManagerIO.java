@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public final class ManagerIO {
     public static void saveManager(Manager tf2mods){
         try {
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("tf2mods.dat"));
             oos.writeObject(tf2mods.getCustomDir());
+            oos.writeObject(tf2mods.getConfig());
             oos.writeObject(tf2mods.getMods());
             oos.writeObject(tf2mods.getCustomTags());
         } catch (IOException e) {
@@ -20,9 +22,11 @@ public final class ManagerIO {
         ois = new ObjectInputStream(new FileInputStream("tf2mods.dat"));
         try {
             File customDir = (File) ois.readObject();
+            Map<String, Boolean> config = (Map<String, Boolean>) ois.readObject();
             List<Mod> mods = (List<Mod>) ois.readObject();
-            List<String> tags = (List<String>) ois.readObject();
-            return new Manager(customDir,mods,tags);
+            ArrayList<String> tags = (ArrayList<String>) ois.readObject();
+
+            return new Manager(customDir,config,mods,tags);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }

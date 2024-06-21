@@ -18,7 +18,8 @@ public final class ImgLibrary {
             entry("enabled","res/P_Have.png"),
             entry("disabled","res/P_Do_not_have.png"),
             entry("plus","res/P_Want.png"),
-            entry("minus","res/P_Dash.png")
+            entry("minus","res/P_Dash.png"),
+            entry("gcf","res/gcf.jpg")
     );
     public static Image getImage(String key){
         if(icons.containsKey(key)){
