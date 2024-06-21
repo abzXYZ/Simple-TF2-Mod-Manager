@@ -23,7 +23,7 @@ public final class ManagerIO {
         try {
             File customDir = (File) ois.readObject();
             Map<String, Boolean> config = (Map<String, Boolean>) ois.readObject();
-            List<Mod> mods = (List<Mod>) ois.readObject();
+            ArrayList<Mod> mods = (ArrayList<Mod>) ois.readObject();
             ArrayList<String> tags = (ArrayList<String>) ois.readObject();
 
             return new Manager(customDir,config,mods,tags);

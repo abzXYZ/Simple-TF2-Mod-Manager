@@ -30,7 +30,7 @@ public class Main {
         }
         try {
             setModManager(ManagerIO.getSavedManager());
-            System.out.println("TF2 custom folder: " + modManager.getCustomDir());
+            modManager.rescanMods();
             showMainWin();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Couldn't read saved config.\nCreating new...", "No configuration detected", JOptionPane.ERROR_MESSAGE);

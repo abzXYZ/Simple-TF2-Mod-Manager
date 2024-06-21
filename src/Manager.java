@@ -9,13 +9,13 @@ import java.util.stream.Stream;
 
 public class Manager implements Serializable {
     private File customDir;
-    private List<Mod> mods;
+    private ArrayList<Mod> mods;
     private ArrayList<String> tags = new ArrayList<String>(Arrays.asList("model","texture","sound","vpk"));
     private ArrayList<String> customTags;
     private Map<String, Boolean> config;
     private File disabledDir = new File("disabled");
 
-    public Manager(File customDir, Map<String, Boolean> config, List<Mod> mods,ArrayList<String> tags) {
+    public Manager(File customDir, Map<String, Boolean> config, ArrayList<Mod> mods,ArrayList<String> tags) {
         this.customDir = customDir;
         this.mods = mods;
         this.customTags = tags;
@@ -42,13 +42,48 @@ public class Manager implements Serializable {
         }
         return detected;
     }
-    public List<Mod> detectMods() {
+    public ArrayList<Mod> detectMods() {
         ArrayList<Mod> enabled = (ArrayList<Mod>) scanDir(customDir.listFiles());
         ArrayList<Mod> disabled = (ArrayList<Mod>) scanDir(new File("disabled").listFiles());
         for(Mod mod : disabled){
             mod.setEnabled(false);
         }
-        return Stream.concat(enabled.stream(),disabled.stream()).toList();
+        enabled.addAll(disabled);
+        return enabled;
+    }
+
+    public void rescanMods(){
+        ArrayList<Mod> found = new ArrayList<>(detectMods());
+        ArrayList<Mod> modsToRemove = new ArrayList<>();
+        ArrayList<Mod> modsToAdd = new ArrayList<>();
+        for(Mod mod : mods){
+            boolean foundName = false;
+            for(Mod foundMod : found){
+                if(mod.getName().equals(foundMod.getName())){
+                    foundName = true;
+                }
+            }
+            if(!foundName){
+                modsToRemove.add(mod);
+            }
+        }
+        for(Mod foundMod : found){
+            boolean foundName = false;
+            for(Mod mod : mods){
+                if(foundMod.getName().equals(mod.getName())){
+                    foundName = true;
+                }
+            }
+            if(!foundName){
+                modsToAdd.add(foundMod);
+            }
+        }
+        for(Mod mod : modsToRemove){
+            mods.remove(mod);
+        }
+        for(Mod mod : modsToAdd){
+            mods.add(mod);
+        }
     }
 
     public void setCustomDir(File customDir) {
