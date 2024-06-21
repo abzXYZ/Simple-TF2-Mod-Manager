@@ -71,7 +71,7 @@ public class Manager implements Serializable {
         }
         return result;
     }
-    private void moveToDisabled(Mod mod, Boolean bool){
+    public void moveToDisabled(Mod mod, Boolean bool){
         if(!bool){
             try {
                 Files.move(mod.getModFile().toPath(), disabledDir.toPath().resolve(mod.getName()));

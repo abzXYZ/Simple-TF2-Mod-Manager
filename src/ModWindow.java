@@ -14,6 +14,7 @@ public class ModWindow extends JFrame {
     private final JList<String> allTagsList = new JList<String>(allTags);
     private JButton addBtn = new JButton("Add tag");
     private JButton removeBtn = new JButton("Remove tag");
+    private JButton switchStatus = new JButton("Disable mod");
     private Mod currentMod;
 
     public ModWindow(){
@@ -25,6 +26,7 @@ public class ModWindow extends JFrame {
         mainpanel.add(modIcon);
         mainpanel.add(title);
         mainpanel.add(statusIcon);
+        mainpanel.add(switchStatus);
         mainpanel.setPreferredSize(new Dimension(600, 200));
 
         JPanel subpanel = new JPanel(new GridLayout(3, 2, 25, 0));
@@ -58,6 +60,21 @@ public class ModWindow extends JFrame {
                 ManagerIO.saveManager(Main.getModManager());
             }
         });
+        switchStatus.addActionListener(e -> {
+            Boolean status = currentMod.getEnabled();
+            System.out.println(status + " -> " + !status);
+            Main.getModManager().moveToDisabled(currentMod,!status);
+            if(status){
+                switchStatus.setText("Disable");
+            } else {
+                switchStatus.setText("Enable");
+            }
+            statusIcon.setIcon(currentMod.getModStatusIcon());
+            currentMod.setEnabled(!status);
+            this.setVisible(false);
+            ManagerIO.saveManager(Main.getModManager());
+            this.showModInfo(currentMod);
+        });
 
         subpanel.add(addBtn);
         subpanel.add(removeBtn);
@@ -65,7 +82,7 @@ public class ModWindow extends JFrame {
         panel.add(mainpanel);
         panel.add(subpanel);
 
-        this.setSize(600, 500);
+        this.setSize(800, 500);
         this.add(panel);
     }
 
@@ -81,6 +98,11 @@ public class ModWindow extends JFrame {
         modTags.removeAllElements();
         allTags.addAll(Main.getModManager().getTags());
         modTags.addAll(mod.getTags());
+        if(mod.getEnabled()){
+            switchStatus.setText("Disable");
+        } else {
+            switchStatus.setText("Enable");
+        }
         title.setText("<html><center><h1>" + mod.getName() + "</h1></center></html>");
         this.setVisible(true);
     }
