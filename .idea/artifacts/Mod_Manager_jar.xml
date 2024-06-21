@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Mod Manager:jar">
+    <output-path>$PROJECT_DIR$</output-path>
+    <root id="archive" name="Mod Manager.jar">
+      <element id="module-output" name="Mod Manager" />
+    </root>
+  </artifact>
+</component>
